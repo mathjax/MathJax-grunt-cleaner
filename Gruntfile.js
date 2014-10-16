@@ -122,7 +122,7 @@ module.exports = function(grunt) {
 // 
 // Remove font formats 
 // If you know you only need a specific format of your remaining fonts (e.g., woff), then you can delete the others.
-      dropFonts: [ // if you usie SVG output, you can drop all font formats (SVG output uses the data in `jax/output/SVG/fonts/...`)
+      dropFonts: [ // if you use SVG output, you can drop all font formats (SVG output uses the data in `jax/output/SVG/fonts/...`)
         "fonts",
       ],
       eot: [
@@ -355,3 +355,13 @@ module.exports = function(grunt) {
         'clean:notcode'
     ]);
 };
+   grunt.registerTask('mjNode', [ 
+        'clean:packed', // pick one -- packed for production, unpacked for development.
+        'clean:allConfigs', // if you do not need any combined configuration files.
+        'clean:dropFonts', // when using SVG output
+        'clean:htmlCssOutput', 
+        'clean:locales', 
+        'clean:miscConfig', 
+        'clean:images',
+        'clean:notcode'
+    ]);
