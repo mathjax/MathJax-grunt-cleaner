@@ -48,7 +48,8 @@ module.exports = function(grunt) {
         "docs",
         "extensions",
         "jax",
-        "localization"
+        "localization",
+        "MathJax.js"
       ],
 // If you don't need combined configuration files or want to build your own:
      allConfigs: [
@@ -213,6 +214,14 @@ module.exports = function(grunt) {
         "jax/output/SVG",
         "unpacked/jax/output/SVG"
       ],
+      commonHtmlOutput: [
+        "configs",
+        "unpacked/config/",
+        "jax/output/CommonHTML",
+        "unpacked/jax/output/CommonHTML",
+        "extensions/CHTML-preview.js",
+        "unpacked/extensions/CHTML-preview.js",
+      ],
 //  ## Locales
 //  Removes all locale files. Change this as needed to keep your preferred language.
 //  **NOTE.** English strings are hardcoded. 
@@ -242,6 +251,7 @@ module.exports = function(grunt) {
         "extensions/MathMenu.js",
         "extensions/MathZoom.js",
         "extensions/Safe.js",
+        "extensions/CHTML-preview.js",
 //        "extensions/toMathML.js",  // only remove `toMathML.js` if you know exactly what you are doing.
         "unpacked/extensions/FontWarnings.js",
         "unpacked/extensions/HelpDialog.js",
@@ -250,6 +260,7 @@ module.exports = function(grunt) {
         "unpacked/extensions/MathMenu.js",
         "unpacked/extensions/MathZoom.js",
         "unpacked/extensions/Safe.js",
+        "unpacked/extensions/CHTML-preview.js",
 //        "unpacked/extensions/toMathML.js",  // only remove `toMathML.js` if you know exactly what you are doing.
         ],
       images: [
@@ -354,14 +365,15 @@ module.exports = function(grunt) {
         'clean:images',
         'clean:notcode'
     ]);
-};
    grunt.registerTask('mjNode', [ 
-        'clean:packed', // pick one -- packed for production, unpacked for development.
-        'clean:allConfigs', // if you do not need any combined configuration files.
-        'clean:dropFonts', // when using SVG output
+        'clean:packed', 
+        'clean:allConfigs',
+        'clean:dropFonts',
         'clean:htmlCssOutput', 
         'clean:locales', 
         'clean:miscConfig', 
         'clean:images',
-        'clean:notcode'
+        'clean:notcode',
+        'clean:miscExtensions'
     ]);
+};
