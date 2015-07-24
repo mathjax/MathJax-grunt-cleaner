@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 
 //   # Notes #
 //   NEVER remove:
-// 
+//
 //   * LICENSE -- the Apache license.
 //   * jax/element/mml -- this implements MathJax's internal format. Keep either the packed or unpacked copy.
 //
@@ -56,14 +56,14 @@ module.exports = function(grunt) {
       "config",
       "unpacked/config"
     ],
-// 
+//
 // ## Choosing a font
 // See http://docs.mathjax.org/en/latest/font-support.html#font-configuration for background information
-// 
+//
 // 1. Remove font files and font data for fonts you won't use.
-//    **IMPORTANT.** Make sure to prevent fallbacks and local fonts in your configuration! 
-// 
-// 
+//    **IMPORTANT.** Make sure to prevent fallbacks and local fonts in your configuration!
+//
+//
       fontAsana: [
         "fonts/HTML-CSS/Asana-Math",
         "jax/output/HTML-CSS/fonts/Asana-Math",
@@ -120,8 +120,8 @@ module.exports = function(grunt) {
         "jax/output/SVG/fonts/TeX",
         "unpacked/jax/output/SVG/fonts/TeX"
       ],
-// 
-// Remove font formats 
+//
+// Remove font formats
 // If you know you only need a specific format of your remaining fonts (e.g., woff), then you can delete the others.
       dropFonts: [ // if you use SVG output, you can drop all font formats (SVG output uses the data in `jax/output/SVG/fonts/...`)
         "fonts",
@@ -142,7 +142,7 @@ module.exports = function(grunt) {
         "fonts/**/woff"
       ],
 // ## Choose the input
-//    Remove input that you don't need. 
+//    Remove input that you don't need.
 //    **Note.** This includes combined configuration files.
       asciimathInput: [
         "config/AM*",
@@ -156,9 +156,9 @@ module.exports = function(grunt) {
         "config/MML*",
         "config/TeX-MML*",
         "config/TeX-AMS-MML*",
-        "jax/input/TeX",
-        "unpacked/config/TeX*",
-        "unpacked/jax/input/TeX"
+        "jax/input/MathML",
+        "unpacked/config/MathML*",
+        "unpacked/jax/input/MathML"
       ],
       texInput: [
         "config/TeX*",
@@ -224,7 +224,7 @@ module.exports = function(grunt) {
       ],
 //  ## Locales
 //  Removes all locale files. Change this as needed to keep your preferred language.
-//  **NOTE.** English strings are hardcoded. 
+//  **NOTE.** English strings are hardcoded.
 //  **NOTE.** If you fix th locale, drop the menu entry: http://docs.mathjax.org/en/latest/options/MathMenu.html#configure-mathmenu
       locales: [
         "localization",
@@ -281,97 +281,97 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-   grunt.registerTask('template', [ 
+   grunt.registerTask('template', [
 // **Notes** on the template. When instructions say "Pick one", this means commenting out one item (so that it's not cleaned).
 //
 //      Early choices.
-        'clean:unpacked', 
+        'clean:unpacked',
         'clean:packed', // pick one -- packed for production, unpacked for development.
         'clean:allConfigs', // if you do not need any combined configuration files.
 //      Fonts. Pick at least one! Check notes above on configurations.
-        'clean:fontAsana', 
-        'clean:fontGyrePagella', 
-        'clean:fontGyreTermes', 
-        'clean:fontLatinModern', 
-        'clean:fontNeoEuler', 
-        'clean:fontStix', 
-        'clean:fontStixWeb', 
-        'clean:fontTeX', 
+        'clean:fontAsana',
+        'clean:fontGyrePagella',
+        'clean:fontGyreTermes',
+        'clean:fontLatinModern',
+        'clean:fontNeoEuler',
+        'clean:fontStix',
+        'clean:fontStixWeb',
+        'clean:fontTeX',
 //      Font formats. Pick at least one (unless you use SVG output; then clean all).
         'clean:dropFonts', // when using SVG output
-        'clean:eot', 
-        'clean:otf', 
-        'clean:png', 
-        'clean:svg', 
+        'clean:eot',
+        'clean:otf',
+        'clean:png',
+        'clean:svg',
         'clean:woff',
 //      Input. Pick at least one.
-        'clean:asciimathInput', 
-        'clean:mathmlInput', 
-        'clean:texInput', 
+        'clean:asciimathInput',
+        'clean:mathmlInput',
+        'clean:texInput',
 //       Output
-        'clean:htmlCssOutput', 
-        'clean:mathmlOutput', 
-        'clean:svgOutput', 
+        'clean:htmlCssOutput',
+        'clean:mathmlOutput',
+        'clean:svgOutput',
 // Extensions. You probably want to leave the set matching your choices.
-        'clean:extensionsAsciimath', 
-        'clean:extensionsMathml', 
-        'clean:extensionsTeX', 
-        'clean:extensionHtmlCss', 
+        'clean:extensionsAsciimath',
+        'clean:extensionsMathml',
+        'clean:extensionsTeX',
+        'clean:extensionHtmlCss',
 // Other items
-        'clean:locales', 
-        'clean:miscConfig', 
+        'clean:locales',
+        'clean:miscConfig',
 //        'clean:miscExtensions', // you probably want that
         'clean:images',
         'clean:notcode'
     ]);
-   grunt.registerTask('MML_SVG_TeX', [ 
+   grunt.registerTask('MML_SVG_TeX', [
 //      Early choices.
-        'clean:unpacked', 
+        'clean:unpacked',
 //        'clean:packed', // pick one -- packed for production, unpacked for development.
         'clean:allConfigs', // if you do not need any combined configuration files.
 //      Fonts. Pick at least one! Check notes above on configurations.
-        'clean:fontAsana', 
-        'clean:fontGyrePagella', 
-        'clean:fontGyreTermes', 
-        'clean:fontLatinModern', 
-        'clean:fontNeoEuler', 
-        'clean:fontStix', 
-        'clean:fontStixWeb', 
-//        'clean:fontTeX', 
+        'clean:fontAsana',
+        'clean:fontGyrePagella',
+        'clean:fontGyreTermes',
+        'clean:fontLatinModern',
+        'clean:fontNeoEuler',
+        'clean:fontStix',
+        'clean:fontStixWeb',
+//        'clean:fontTeX',
 //      Font formats. Pick at least one (unless you use SVG output; then clean all).
         'clean:dropFonts', // when using SVG output
-        'clean:eot', 
-        'clean:otf', 
-        'clean:png', 
-        'clean:svg', 
+        'clean:eot',
+        'clean:otf',
+        'clean:png',
+        'clean:svg',
         'clean:woff',
 //      Input. Pick at least one.
-        'clean:asciimathInput', 
-//        'clean:mathmlInput', 
-        'clean:texInput', 
+        'clean:asciimathInput',
+//        'clean:mathmlInput',
+        'clean:texInput',
 //       Output
-        'clean:htmlCssOutput', 
-        'clean:mathmlOutput', 
-//        'clean:svgOutput', 
+        'clean:htmlCssOutput',
+        'clean:mathmlOutput',
+//        'clean:svgOutput',
 // Extensions. You probably want to leave the set matching your choices.
-        'clean:extensionsAsciimath', 
-//        'clean:extensionsMathml', 
-        'clean:extensionsTeX', 
-        'clean:extensionHtmlCss', 
+        'clean:extensionsAsciimath',
+//        'clean:extensionsMathml',
+        'clean:extensionsTeX',
+        'clean:extensionHtmlCss',
 // Other items
-        'clean:locales', 
-        'clean:miscConfig', 
+        'clean:locales',
+        'clean:miscConfig',
 //        'clean:miscExtensions', // you probably want that
         'clean:images',
         'clean:notcode'
     ]);
-   grunt.registerTask('mjNode', [ 
-        'clean:packed', 
+   grunt.registerTask('mjNode', [
+        'clean:packed',
         'clean:allConfigs',
         'clean:dropFonts',
-        'clean:htmlCssOutput', 
-        'clean:locales', 
-        'clean:miscConfig', 
+        'clean:htmlCssOutput',
+        'clean:locales',
+        'clean:miscConfig',
         'clean:images',
         'clean:notcode',
         'clean:miscExtensions'
