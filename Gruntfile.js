@@ -276,10 +276,30 @@ module.exports = function(grunt) {
         "bower.json",
         "composer.json"
       ]
+    },
+    "regex-replace": {
+      // disable image fonts in default HTML-CSS config
+      noImageFont: {
+        src: ['unpacked/jax/output/HTML-CSS/config.js'],
+        actions: [
+          {
+            name: 'nullImageFont',
+            search: /imageFont:[^,]+,/,
+            replace: 'imageFont: null,',
+          }
+        ]
+      }
     }
   });
 
   grunt.loadNpmTasks("grunt-contrib-clean");
+  grunt.loadNpmTasks('grunt-regex-replace');
+
+  grunt.registerTask("component", [
+    // components-mathjax excludes only PNG fonts
+    "regex-replace:noImageFont",
+    "clean:png",
+  ]);
 
   grunt.registerTask("template", [
     // **Notes** on the template. When instructions say "Pick one", this means commenting out one item (so that it"s not cleaned).
