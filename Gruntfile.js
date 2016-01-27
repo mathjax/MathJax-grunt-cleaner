@@ -225,8 +225,6 @@ module.exports = function(grunt) {
         "unpacked/extensions/CHTML-preview.js"
       ],
       previewHtmlOutput: [
-        "configs",
-        "unpacked/config/",
         "jax/output/PreviewHTML",
         "unpacked/jax/output/PreviewHTML",
         "extensions/fast-preview.js",
@@ -235,8 +233,6 @@ module.exports = function(grunt) {
         "unpacked/extensions/CHTML-preview.js"
       ],
       plainSourceOutput: [
-        "configs",
-        "unpacked/config/",
         "jax/output/PlainSource",
         "unpacked/jax/output/PlainSource"
       ],
