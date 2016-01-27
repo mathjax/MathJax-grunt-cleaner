@@ -209,23 +209,41 @@ module.exports = function(grunt) {
       svgOutput: [
         "config/*SVG.js",
         "config/*SVG-full.js",
-        "unpacked/config/*HTMLorMML.js",
-        "unpacked/config/*HTMLorMML-full.js",
+        "unpacked/config/*SVG.js",
+        "unpacked/config/*SVG-full.js",
         "jax/output/SVG",
         "unpacked/jax/output/SVG"
       ],
       commonHtmlOutput: [
-        "configs",
-        "unpacked/config/",
+        "configs/*CHTML.js",
+        "configs/*CHTML-full.js",
+        "unpacked/config/*CHTML.js",
+        "unpacked/configs/*CHTML-full.js",
         "jax/output/CommonHTML",
         "unpacked/jax/output/CommonHTML",
         "extensions/CHTML-preview.js",
         "unpacked/extensions/CHTML-preview.js"
       ],
+      previewHtmlOutput: [
+        "configs",
+        "unpacked/config/",
+        "jax/output/PreviewHTML",
+        "unpacked/jax/output/PreviewHTML",
+        "extensions/fast-preview.js",
+        "unpacked/extensions/fast-preview.js"
+        "extensions/CHTML-preview.js",
+        "unpacked/extensions/CHTML-preview.js"
+      ],
+      plainSourceOutput: [
+        "configs",
+        "unpacked/config/",
+        "jax/output/PlainSource",
+        "unpacked/jax/output/PlainSource"
+      ],
       //  ## Locales
       //  Removes all locale files. Change this as needed to keep your preferred language.
       //  **NOTE.** English strings are hardcoded.
-      //  **NOTE.** If you fix th locale, drop the menu entry: http://docs.mathjax.org/en/latest/options/MathMenu.html#configure-mathmenu
+      //  **NOTE.** If you fix the locale, drop the menu entry: http://docs.mathjax.org/en/latest/options/MathMenu.html#configure-mathmenu
       locales: [
         "localization",
         "unpacked/localization"
@@ -242,6 +260,10 @@ module.exports = function(grunt) {
         "unpacked/config/default.js",
         "config/Safe.js",
         "unpacked/config/Safe.js"
+      ],
+      a11yExtensions: [
+        "extensions/AssistiveMML.js",
+        "unpacked/extensions/AssistiveMML.js"
       ],
       miscExtensions: [
         "extensions/FontWarnings.js",
@@ -274,7 +296,9 @@ module.exports = function(grunt) {
         "README-branch.txt",
         "README.md",
         "bower.json",
-        "composer.json"
+        "composer.json",
+        ".npmignore",
+        "package.json"
       ]
     }
   });
