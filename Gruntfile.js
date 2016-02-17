@@ -228,7 +228,7 @@ module.exports = function(grunt) {
         "jax/output/PreviewHTML",
         "unpacked/jax/output/PreviewHTML",
         "extensions/fast-preview.js",
-        "unpacked/extensions/fast-preview.js"
+        "unpacked/extensions/fast-preview.js",
         "extensions/CHTML-preview.js",
         "unpacked/extensions/CHTML-preview.js"
       ],
